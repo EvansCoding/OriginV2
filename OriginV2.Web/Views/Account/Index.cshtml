@@ -1,0 +1,74 @@
+﻿@model  OriginV2.Web.ViewModels.LogOnViewModel
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Login page | Velonic - Responsive Bootstrap 4 Admin Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="Responsive bootstrap 4 admin template" name="description">
+    <meta content="Coderthemes" name="author">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- App favicon -->
+    @*<link rel="shortcut icon" href="assets\images\favicon.ico">*@
+
+    <!-- App css -->
+    <link href="~/Content/Admin/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" id="bootstrap-stylesheet">
+    <link href="~/Content/Admin/assets/css/icons.min.css" rel="stylesheet" type="text/css">
+    <link href="~/Content/Admin/assets/css/app.min.css" rel="stylesheet" type="text/css" id="app-stylesheet">
+
+</head>
+
+<body class="authentication-page">
+
+    <div class="account-pages my-5">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-8 col-lg-6 col-xl-5">
+                    <div class="card mt-4">
+                        <div class="card-header p-4 bg-primary">
+                            <h4 class="text-white text-center mb-0 mt-0">Admin</h4>
+                        </div>
+                        <div class="card-body">
+                            @using (@Html.BeginForm("LogOn", "Account", new { Area = String.Empty}))
+                            {
+                                @Html.AntiForgeryToken()
+                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                                <div class="form-group mb-3">
+                                    <label for="emailaddress">Tài khoản <span class="text-danger">*</span></label>
+                                    @Html.EditorFor(model => model.Username, new { htmlAttributes = new { @class = "form-control", placeholder = "admin", required = "required" } })
+                                    @Html.ValidationMessageFor(x => x.Username, "", new { @class = "text-danger" })
+                                </div>
+
+                                <div class="form-group mb-3">
+                                    <label for="emailaddress">Mật khẩu <span class="text-danger">*</span></label>
+                                    @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control", placeholder = "Nhập mật khẩu", required = "required" } })
+                                    @Html.ValidationMessageFor(x => x.Password, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="form-group row text-center mt-4 mb-4">
+                                    <div class="col-12">
+                                        <button class="btn btn-md btn-block btn-primary waves-effect waves-light" type="submit">Đăng nhập</button>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Vendor js -->
+    <script src="~/Content/Admin/assets/js/vendor.min.js"></script>
+
+    <!-- App js -->
+    <script src="~/Content/Admin/assets/js/app.min.js"></script>
+
+
+</body>
+
+</html>

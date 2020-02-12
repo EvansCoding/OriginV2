@@ -1,0 +1,111 @@
+﻿<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" >
+    <title>Quản trị Website</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="Website K.KT-CN" name="description">
+    <meta content="Coderthemes" name="author">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="shortcut icon" href="~/Content/Admin/assets/images/header/icons8_books.ico">
+    @Styles.Render("~/css/Admin")
+
+</head>
+
+<body>  
+    <div id="wrapper">
+        <div class="navbar-custom">
+            <ul class="list-unstyled topnav-menu float-right mb-0">
+                <li class="dropdown notification-list">
+                    <a class="nav-link dropdown-toggle nav-user mr-0 waves-effect" href="@Url.Action("LogOut","Account", new { Area = String.Empty})">
+                        <img src="~/Content/Admin/assets/images/header/logout_rounded_64px.png" alt="user-image" class="rounded-circle">
+                        <span class="pro-user-name ">
+                            Đăng xuất
+                        </span>
+                    </a>
+                </li>
+            </ul>
+
+            <div class="logo-box">
+                <a href="@Url.Action("ProfileView","User", new { Area = "Admin"})" class="logo text-center logo-dark">
+                    <span class="logo-lg">
+                        <img src="~/Content/Admin/assets/images/logo-dark.png" alt="" height="18">
+                    </span>
+                    <span class="logo-sm">
+                        <img src="~/Content/Admin/assets/images/logo-sm.png" alt="" height="22">
+                    </span>
+                </a>
+
+                <a href="@Url.Action("ProfileView","User", new { Area = "Admin"})" class="logo text-center logo-light">
+                    <span class="logo-lg">
+                        <img src="~/Content/Admin/assets/images/logo-light.png" alt="" height="18">
+                    </span>
+                    <span class="logo-sm">
+                        <img src="~/Content/Admin/assets/images/logo-sm.png" alt="" height="22">
+                    </span>
+                </a>
+            </div>
+
+            <ul class="list-unstyled topnav-menu topnav-menu-left m-0">
+                <li>
+                    <button class="button-menu-mobile waves-effect">
+                        <i class="mdi mdi-menu"></i>
+                    </button>
+                </li>
+
+            </ul>
+        </div>
+        <div class="left-side-menu">
+            <div class="slimscroll-menu">
+                <div id="sidebar-menu">
+                    <ul class="metismenu" id="side-menu">
+                        <li>
+                            <a class="waves-effect">
+                                <i class="ion-md-speedometer"></i>
+                                <span>  Cấu hình </span>
+                                <span class="menu-arrow"></span>
+                            </a>
+                            <ul class="nav-second-level" aria-expanded="false">
+                                <li><a href="@Url.Action("ProfileView","User", new { Area = "Admin"})">Hồ sơ</a></li>
+                                <li><a href="@Url.Action("RoleView","Role", new { Area = "Admin"})">Quyền</a></li>
+                                <li><a href="@Url.Action("UserView","User", new { Area = "Admin"})">Người dùng</a></li>
+                                <li><a href="#">Nhà sản xuất</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a class="waves-effect">
+                                <i class="ion-md-basket"></i>
+                                <span> Sản phẩm </span>
+                                <span class="menu-arrow"></span>
+                            </a>
+                            <ul class="nav-second-level" aria-expanded="false">
+                                <li><a href="@Url.Action("ProductView","Product", new { Area = "Admin"})">Sản phẩm đã duyệt</a></li>
+                                <li><a href="@Url.Action("ProductView","ProductView", new { Area = "Admin"})">Sản phẩm chưa duyệt</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+        <div class="content-page">
+            <div class="content">
+                <div class="container-fluid">
+
+                    @RenderBody()
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @Scripts.Render("~/script/Admin")
+
+    @if (IsSectionDefined("scripts"))
+    {
+        @RenderSection("scripts", false)
+    }
+    @Html.Partial("_GenericMessage")
+</body>
+</html>
