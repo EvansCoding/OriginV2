@@ -23,7 +23,6 @@ namespace OriginV2.Core.Services
             if (!string.IsNullOrEmpty(name))
             {
                 return context.Users
-                    .Include(x => x.Role)
                     .Include(x => x.Account)
                     .Where(x => x.FullName.Contains(name))
                     .OrderBy(x => x.FullName).ToPagedList(page, pageSize);
@@ -54,7 +53,6 @@ namespace OriginV2.Core.Services
             {
                 return context.Users
                     .Include(x => x.Account)
-                    .Include(x => x.Role)
                     .Where(x => x.Id == new Guid(id)).SingleOrDefault();
             }
             catch (Exception)

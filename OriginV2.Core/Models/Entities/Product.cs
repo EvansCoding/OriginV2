@@ -22,12 +22,11 @@ namespace OriginV2.Core.Models.Entities
         public string Technology { get; set; }
         public bool Publish { get; set; }
         public DateTime HarvestAt { get; set; }
-        public bool CreateAt { get; set; }
-
+        public DateTime CreateAt { get; set; }
+        public string Parent { get; set; }
         public virtual Supplier Supplier { get; set; }
         public virtual User User { get; set; }
 
-        public virtual Product Children { get; set; }
-        public virtual Product Parent { get; set; }
+
     }
 }

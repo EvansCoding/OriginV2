@@ -1,0 +1,123 @@
+﻿
+@{
+    ViewBag.Title = "ProductView";
+    Layout = "~/Areas/Supplier/Views/Shared/_SupplierLayout.cshtml";
+}
+
+
+
+
+<div id="data1">
+    <div class="row">
+        <div class="col-12">
+            <div class="page-title-box">
+                <h4 class="page-title">Danh sách sản phẩm đã duyệt</h4>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <h6 class="">Tìm kiếm</h6>
+                            @using (@Html.BeginForm("SearchProduct", "Product", FormMethod.Post, new { onsubmit = "return SubmitSearch(this)" }))
+                            {
+                                <div class="form-row align-items-center">
+                                    <div class="col-auto">
+                                        <input id="search" class="form-control" type="text" name="search" placeholder="Từ khóa bất kỳ" />
+                                    </div>
+                                    <div class="col-auto">
+                                        <button type="submit" id="searchByName" class="btn btn-icon waves-effect waves-light btn-primary">
+                                            <i class="fas fa-search "></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="table-responsive" id="tableAjax">
+                        @{
+                            Html.RenderAction("LoadTable", "Product");
+                        }
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+
+    <script>
+        $(document).ready(function () {
+            $('#search').keypress(function () {
+                var name = $(this).val();
+
+                $.ajax({
+                    type: "get",
+                    url: "/Supplier/Product/LoadTable?search=" + name,
+                    contentType: "html",
+                    success: function (response) {
+                        $('#tableAjax').html(response);
+                    }
+                })
+            });
+            $("nav ul li a").addClass("page-link");
+            $("nav ul ").addClass("justify-content-end");
+        })
+
+        function SubmitSearch(form) {
+            var name = $("#search").val();
+            var supplier = $("#DropDwnSupplier").val();
+            post_url = $(form).attr("action");
+            $.ajax({
+                type: "Get",
+                url: "/Supplier/Product/LoadTable?search=" + name + "&supplier=" + supplier,
+                contentType: "html",
+                success: function (response) {
+                    $('#tableAjax').html(response);
+                }
+            });
+            return false;
+        }
+        function Popup(urlMem) {
+
+            var url = urlMem;
+            $.ajax({
+                url: url,
+                type: 'GET',
+                success: function (response) {
+                    $('#modalcontent').html(response);
+                    $("#exampleModal").modal("show");
+                },
+                error: function (xhr, status) {
+                    alert(status);
+                }
+            });
+        }
+    </script>
+}
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content" id="modalcontent">
+
+        </div>
+    </div>
+</div>
+
+
+
+

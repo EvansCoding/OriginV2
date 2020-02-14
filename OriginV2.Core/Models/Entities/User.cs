@@ -18,7 +18,6 @@ namespace OriginV2.Core.Models.Entities
         public DateTime CreateAt { get; set; }
         public DateTime UpdateAt { get; set; }
 
-        public virtual Role Role { get; set; }
         public virtual IList<Product> Products { get; set; }
         public virtual Account Account { get; set; }
     }

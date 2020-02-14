@@ -60,3 +60,7 @@ C:\Users\nguye\source\repos\OriginV2\OriginV2.Core\bin\Debug\PagedList.Mvc.dll
 C:\Users\nguye\source\repos\OriginV2\OriginV2.Core\bin\Debug\PagedList.xml
 C:\Users\nguye\source\repos\OriginV2\OriginV2.Core\bin\Debug\PagedList.Mvc.xml
 C:\Users\nguye\source\repos\OriginV2\OriginV2.Core\obj\Debug\OriginV2.Core.Migrations.MyNewMigration3.resources
+C:\Users\nguye\source\repos\OriginV2\OriginV2.Core\obj\Debug\OriginV2.Core.Migrations.Initialize1.resources
+C:\Users\nguye\source\repos\OriginV2\OriginV2.Core\obj\Debug\OriginV2.Core.Migrations.Initialize2.resources
+C:\Users\nguye\source\repos\OriginV2\OriginV2.Core\obj\Debug\OriginV2.Core.Migrations.Initialize3.resources
+C:\Users\nguye\source\repos\OriginV2\OriginV2.Core\obj\Debug\OriginV2.Core.Migrations.Initialize4.resources

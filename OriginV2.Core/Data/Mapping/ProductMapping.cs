@@ -19,12 +19,7 @@ namespace OriginV2.Core.Data.Mapping
             Property(x => x.Publish).IsRequired();
             Property(x => x.HarvestAt).IsRequired();
             Property(x => x.CreateAt).IsRequired();
-
-            HasRequired(x => x.Children)
-                .WithOptional(x => x.Parent)
-                .Map(x => x.MapKey("Parent_Id"))
-                .WillCascadeOnDelete(false);
-
+            Property(x => x.Parent).IsOptional();
         }
     }
 }

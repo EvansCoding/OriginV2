@@ -43,8 +43,10 @@
         {
             Container.BindInRequestScope<IDataContext, DataContext>();
             Container.BindInRequestScope<IAccountService, AccountService>();
-            Container.BindInRequestScope<IRoleService, RoleService>();
             Container.BindInRequestScope<IUserService, UserService>();
+            Container.BindInRequestScope<ISupplierService, SupplierService>();
+            Container.BindInRequestScope<IProductViewService, ProductViewService>();
+            Container.BindInRequestScope<IProductService, ProductService>();
         }
     }
 }

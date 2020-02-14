@@ -205,16 +205,24 @@
     <Compile Include="App_Start\Startup.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
-    <Compile Include="Areas\Admin\Controllers\BaseController.cs" />
-    <Compile Include="Areas\Admin\Controllers\RoleController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ProductController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ProductViewController.cs" />
+    <Compile Include="Areas\Admin\Controllers\SupplierController.cs" />
     <Compile Include="Areas\Admin\Controllers\UserController.cs" />
+    <Compile Include="Areas\Supplier\Controllers\ProductController.cs" />
+    <Compile Include="Areas\Supplier\Controllers\ProductViewController.cs" />
+    <Compile Include="Areas\Supplier\Controllers\SupplierController.cs" />
     <Compile Include="Areas\Supplier\SupplierAreaRegistration.cs" />
+    <Compile Include="Common\BaseController.cs" />
+    <Compile Include="Common\SupplierLogin.cs" />
     <Compile Include="Common\UserLogin.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\GenericMessageViewModel.cs" />
     <Compile Include="ViewModels\LogOnViewModel.cs" />
-    <Compile Include="ViewModels\RoleViewModel.cs" />
+    <Compile Include="ViewModels\ProductViewModel.cs" />
+    <Compile Include="ViewModels\ProductViewViewModel.cs" />
+    <Compile Include="ViewModels\SupplierViewModel.cs" />
     <Compile Include="ViewModels\UserViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -406,6 +414,33 @@
     <Content Include="Content\Admin\assets\libs\toastr\toastr.min.js" />
     <Content Include="Content\Admin\assets\libs\x-editable\bootstrap-editable.css" />
     <Content Include="Content\Admin\assets\libs\x-editable\bootstrap-editable.min.js" />
+    <Content Include="Content\Client\css\animate.css" />
+    <Content Include="Content\Client\css\aos.css" />
+    <Content Include="Content\Client\css\bootstrap.css" />
+    <Content Include="Content\Client\css\default-min.css" />
+    <Content Include="Content\Client\css\default.css" />
+    <Content Include="Content\Client\css\font-awesome.min.css" />
+    <Content Include="Content\Client\css\LineIcons.css" />
+    <Content Include="Content\Client\css\slick.css" />
+    <Content Include="Content\Client\css\style.css" />
+    <Content Include="Content\Client\fonts\fontawesome-webfont.svg" />
+    <Content Include="Content\Client\fonts\LineIcons.svg" />
+    <Content Include="Content\Client\images\about\about-1.png" />
+    <Content Include="Content\Client\images\about\about-2.png" />
+    <Content Include="Content\Client\images\about\dots.jpg" />
+    <Content Include="Content\Client\images\about\imgx1.jpg" />
+    <Content Include="Content\Client\images\about\imgx2.jpg" />
+    <Content Include="Content\Client\images\favicon.png" />
+    <Content Include="Content\Client\images\logo.png" />
+    <Content Include="Content\Client\js\aos.js" />
+    <Content Include="Content\Client\js\bootstrap.min.js" />
+    <Content Include="Content\Client\js\jquery.easing.min.js" />
+    <Content Include="Content\Client\js\main.js" />
+    <Content Include="Content\Client\js\scrolling-nav.js" />
+    <Content Include="Content\Client\js\slick.min.js" />
+    <Content Include="Content\Client\js\vendor\jquery-1.12.4.min.js" />
+    <Content Include="Content\Client\js\vendor\modernizr-3.6.0.min.js" />
+    <Content Include="Content\Client\js\wow.min.js" />
     <Content Include="Content\PagedList.css" />
     <Content Include="favicon.ico" />
     <Content Include="filemanager\ajax_calls.php" />
@@ -693,11 +728,9 @@
     <Content Include="Views\Shared\Error.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Areas\Admin\Views\Base\" />
-    <Folder Include="Areas\Supplier\Controllers\" />
-    <Folder Include="Areas\Supplier\Views\Shared\" />
     <Folder Include="Media\Thumbs\" />
     <Folder Include="Media\Uploads\" />
+    <Folder Include="Views\Base\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\Admin\assets\fonts\fa-brands-400-1.bin" />
@@ -752,13 +785,38 @@
     <Content Include="Content\Admin\assets\fonts\weathericons-regular-webfont.bin" />
     <Content Include="Areas\Admin\Views\Shared\_AdminLayout.cshtml" />
     <Content Include="Areas\Admin\Views\User\ProfileView.cshtml" />
-    <Content Include="Areas\Admin\Views\Role\RoleView.cshtml" />
-    <Content Include="Areas\Admin\Views\Role\CRUDRole.cshtml" />
-    <Content Include="Areas\Admin\Views\Role\RoleTablePartialView.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_GenericMessage.cshtml" />
     <Content Include="Areas\Admin\Views\User\UserView.cshtml" />
     <Content Include="Areas\Admin\Views\User\CRUDUser.cshtml" />
     <Content Include="Areas\Admin\Views\User\UserTablePartialView.cshtml" />
+    <Content Include="Areas\Admin\Views\Supplier\SupplierView.cshtml" />
+    <Content Include="Areas\Admin\Views\Supplier\CRUDSupplier.cshtml" />
+    <Content Include="Areas\Admin\Views\Supplier\SupplierTablePartialView.cshtml" />
+    <Content Include="Areas\Supplier\Views\Shared\_SupplierLayout.cshtml" />
+    <Content Include="Areas\Supplier\Views\Shared\_GenericMessage.cshtml" />
+    <Content Include="Areas\Supplier\Views\Supplier\ProfileView.cshtml" />
+    <Content Include="Areas\Supplier\Views\ProductView\ProductView.cshtml" />
+    <Content Include="Areas\Supplier\Views\ProductView\ProductViewTablePartialView.cshtml" />
+    <Content Include="Areas\Supplier\Views\ProductView\CRUDProductView.cshtml" />
+    <Content Include="Areas\Admin\Views\ProductView\ProductView.cshtml" />
+    <Content Include="Areas\Admin\Views\ProductView\ShowProductView.cshtml" />
+    <Content Include="Content\Client\css\style.css.map" />
+    <Content Include="Content\Client\fonts\fontawesome-webfont.eot" />
+    <Content Include="Content\Client\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Content\Client\fonts\fontawesome-webfont.woff" />
+    <Content Include="Content\Client\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Content\Client\fonts\FontAwesome.otf" />
+    <Content Include="Content\Client\fonts\LineIcons.eot" />
+    <Content Include="Content\Client\fonts\LineIcons.ttf" />
+    <Content Include="Content\Client\fonts\LineIcons.woff" />
+    <Content Include="Content\Client\js\.DS_Store" />
+    <Content Include="Areas\Admin\Views\ProductView\ProductViewTablePartialView.cshtml" />
+    <Content Include="Areas\Admin\Views\Product\ProductView.cshtml" />
+    <Content Include="Areas\Admin\Views\Product\ProductTablePartialView.cshtml" />
+    <Content Include="Areas\Admin\Views\Product\ShowProductView.cshtml" />
+    <Content Include="Areas\Supplier\Views\Product\ProductView.cshtml" />
+    <Content Include="Areas\Supplier\Views\Product\ProductTablePartialView.cshtml" />
+    <Content Include="Areas\Supplier\Views\Product\ShowProductView.cshtml" />
     <None Include="packages.config" />
     <Content Include="Views\Account\Index.cshtml" />
   </ItemGroup>

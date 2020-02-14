@@ -14,7 +14,6 @@ namespace OriginV2.Web.ViewModels
         [DataType(DataType.Password)]
         public string Password { get; set; }
 
-        public string RoleID { get; set; }
         public string PathImage { get; set; }
     }
 }

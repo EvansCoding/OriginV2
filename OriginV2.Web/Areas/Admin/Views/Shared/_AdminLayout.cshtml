@@ -2,18 +2,19 @@
 <html lang="vi">
 
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" >
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>Quản trị Website</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="Website K.KT-CN" name="description">
     <meta content="Coderthemes" name="author">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link rel="shortcut icon" href="~/Content/Admin/assets/images/header/icons8_books.ico">
+
     @Styles.Render("~/css/Admin")
 
 </head>
 
-<body>  
+<body>
     <div id="wrapper">
         <div class="navbar-custom">
             <ul class="list-unstyled topnav-menu float-right mb-0">
@@ -68,9 +69,8 @@
                             </a>
                             <ul class="nav-second-level" aria-expanded="false">
                                 <li><a href="@Url.Action("ProfileView","User", new { Area = "Admin"})">Hồ sơ</a></li>
-                                <li><a href="@Url.Action("RoleView","Role", new { Area = "Admin"})">Quyền</a></li>
-                                <li><a href="@Url.Action("UserView","User", new { Area = "Admin"})">Người dùng</a></li>
-                                <li><a href="#">Nhà sản xuất</a></li>
+                                <li><a href="@Url.Action("UserView","User", new { Area = "Admin"})">Quản trị viên</a></li>
+                                <li><a href="@Url.Action("SupplierView","Supplier", new { Area = "Admin"})">Nhà sản xuất</a></li>
                             </ul>
                         </li>
                         <li>
@@ -100,8 +100,8 @@
         </div>
     </div>
 
-    @Scripts.Render("~/script/Admin")
 
+    @Scripts.Render("~/script/Admin")
     @if (IsSectionDefined("scripts"))
     {
         @RenderSection("scripts", false)

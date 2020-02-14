@@ -21,6 +21,6 @@ namespace OriginV2.Core.Models.Entities
         public virtual IList<Product> Products { get; set; }    
         public virtual IList<ProductView> ProductViews { get; set; }
         public virtual Account Account { get; set; }
-        public virtual Role Role { get; set; }
+
     }
 }

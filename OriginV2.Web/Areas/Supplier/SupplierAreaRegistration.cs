@@ -17,7 +17,7 @@ namespace OriginV2.Web.Areas.Supplier
             context.MapRoute(
                 "Supplier_default",
                 "Supplier/{controller}/{action}/{id}",
-                new { action = "Index", id = UrlParameter.Optional }
+                new { controller ="Supplier", action = "ProfileView", id = UrlParameter.Optional }
             );
         }
     }

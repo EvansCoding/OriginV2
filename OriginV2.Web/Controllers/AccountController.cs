@@ -32,18 +32,24 @@ namespace OriginV2.Web.Controllers
                 {
                     FormsAuthentication.SetAuthCookie(username, true);
                     var account = accountService.GetAccountByUserName(username);
-                    var userSession = new UserLogin();
-                    userSession.UserID = account.Id;
-                    userSession.Username = account.Username;
-                    Session.Add(Constant.USER_SESSION, userSession);
+                    
                     if(account.User != null)
                     {
+                        var userSession = new UserLogin();
+                        userSession.UserID = account.Id;
+                        userSession.Username = account.Username;
+                        Session.Add(Constant.USER_SESSION, userSession);
+
                         return RedirectToAction("ProfileView", "User", new { Area = "Admin" });
                     }
 
                     if (account.Supplier != null)
                     {
-                        return RedirectToAction("ProfileView", "User", new { Area = "Supplier" });
+                        var supplierSession = new SupplierLogin();
+                        supplierSession.UserID = account.Id;
+                        supplierSession.Username = account.Username;
+                        Session.Add(Constant.SUPPLIER_SESSION, supplierSession);
+                        return RedirectToAction("ProfileView", "Supplier", new { Area = "Supplier" });
                     }
                 }
             }

@@ -14,12 +14,10 @@ namespace OriginV2.Web.Areas.Admin.Controllers
     public class UserController : BaseController
     {
         public readonly IAccountService accountService;
-        public readonly IRoleService roleService;
         public readonly IUserService userService;
-        public UserController(IAccountService accountService, IRoleService roleService, IUserService userService, IDataContext context) : base(context)
+        public UserController(IAccountService accountService,  IUserService userService, IDataContext context) : base(context)
         {
             this.accountService = accountService;
-            this.roleService = roleService;
             this.userService = userService;
         }
 
@@ -129,10 +127,8 @@ namespace OriginV2.Web.Areas.Admin.Controllers
 
         public ActionResult AddOrEdit(string Id = "")
         {
-            List<Role> ListRoles = roleService.GetRoles();
             if (Id.Equals(""))
             {
-                ViewBag.ListOfRoles = new SelectList(ListRoles, "Id", "Name");
                 return PartialView("CRUDUser", new UserViewModel());
             }
             else
@@ -150,14 +146,6 @@ namespace OriginV2.Web.Areas.Admin.Controllers
                     model.Username = data.Account.Username;
                     model.Password = data.Account.Password;
                     model.AccountID = data.Id.ToString();
-                    if (data.Role == null)
-                    {
-                        ViewBag.ListOfRoles = new SelectList(ListRoles, "Id", "Name");
-                    }
-                    else
-                    {
-                        ViewBag.ListOfRoles = new SelectList(ListRoles, "Id", "Name", data.Role.Id);
-                    }
                     return PartialView("CRUDUser", model);
                 }
             }
@@ -190,7 +178,6 @@ namespace OriginV2.Web.Areas.Admin.Controllers
                     };
                     try
                     {
-                        user.Role = context.Roles.Where(x => x.Id == new Guid(model.RoleID)).SingleOrDefault();
                         var act = new Account() { Username = model.Username, Password = model.Password };
                         context.Accounts.Add(act);
 
@@ -247,7 +234,6 @@ namespace OriginV2.Web.Areas.Admin.Controllers
                     account.User.UpdateAt = DateTime.Now;
                     try
                     {
-                        account.User.Role = context.Roles.Where(x => x.Id == new Guid(model.RoleID)).SingleOrDefault();
 
                         context.SaveChanges();
                         TempData[Constant.MessageViewBagName] = new GenericMessageViewModel

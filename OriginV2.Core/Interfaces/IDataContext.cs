@@ -10,7 +10,6 @@ namespace OriginV2.Core.Interfaces
         DbSet<Account> Accounts { get; set; }
         DbSet<Product> Products { get; set; }
         DbSet<ProductView> ProductViews { get; set; }
-        DbSet<Role> Roles { get; set; }
         DbSet<Supplier> Suppliers { get; set; }
         DbSet<User> Users { get; set; }
 
