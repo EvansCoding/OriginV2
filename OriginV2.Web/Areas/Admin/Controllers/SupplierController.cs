@@ -117,15 +117,15 @@ namespace OriginV2.Web.Areas.Admin.Controllers
             }
             else
             {
-                var account = accountService.GetAccountByUserName(model.Username);
-                if (account != null)
+                var supplier = supplierService.GetSupplierByID(model.Id);
+                if (supplier != null)
                 {
-                    if (!account.Username.Equals(model.Username) && !model.Username.Equals(""))
+                    if (!supplier.Account.Username.Equals(model.Username) && !model.Username.Equals(""))
                     {
                         var listCount = context.Accounts.Where(x => x.Username.Equals(model.Username)).ToList();
                         if (listCount.Count == 0)
                         {
-                            account.Username = model.Username;
+                            supplier.Account.Username = model.Username;
                         }
                         else
                         {
@@ -138,11 +138,11 @@ namespace OriginV2.Web.Areas.Admin.Controllers
                         }
                     }
 
-                    account.Supplier.Name = model.Name;
-                    account.Supplier.Address = model.Address;
-                    account.Supplier.PathImage = model.PathImage;
-                    account.Password = model.Password;
-                    account.Supplier.UpdateAt = DateTime.Now;
+                    supplier.Name = model.Name;
+                    supplier.Address = model.Address;
+                    supplier.PathImage = model.PathImage;
+                    supplier.Account.Password = model.Password;
+                    supplier.UpdateAt = DateTime.Now;
                     try
                     {
 

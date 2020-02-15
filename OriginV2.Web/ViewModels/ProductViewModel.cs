@@ -13,6 +13,7 @@ namespace OriginV2.Web.ViewModels
         public string Technology { get; set; }
         public string NameSupplier { get; set; }
         public string AddressSupplier { get; set; }
+        public string HashCode { get; set; }
         public DateTime Harvest { get; set; }
     }
 }

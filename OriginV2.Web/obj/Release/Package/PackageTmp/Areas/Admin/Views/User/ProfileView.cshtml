@@ -1,0 +1,107 @@
+﻿@model OriginV2.Web.ViewModels.UserViewModel
+@{
+    ViewBag.Title = "Profile";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="row">
+    <div class="col-sm-12">
+        <div class="profile-bg-picture" style="background-image:url('/Content/Admin/assets/images/background.jpg')">
+            <span class="picture-bg-overlay"></span>
+        </div>
+        <div class="profile-user-box">
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="profile-user-img"><img src="@Model.PathImage" alt="" class="avatar-lg rounded-circle"></div>
+                    <div class="">
+                        <h4 class="mt-5 font-18 ellipsis">@Model.FullName</h4>
+                        <p class="font-13"> @Model.Email</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-4">
+    <div class="col-sm-12">
+        <div class="card p-0">
+            <div class="card-body p-0">
+                <ul class=" nav nav-tabs tabs-bordered nav-justified">
+                    <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#edit-profile">Cài đặt</a></li>
+                </ul>
+            </div>
+            <div class="tab-content m-0 p-4">
+                <div id="edit-profile">
+                    <div class="user-profile-content">
+                        <div class="card">
+                            <div class="card-body">
+                                @using (@Html.BeginForm("UpdateProfile", "User", FormMethod.Post))
+                                {
+                                    @Html.AntiForgeryToken()
+                                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                                    @Html.HiddenFor(model => model.Id)
+
+                                    @Html.HiddenFor(model => model.AccountID)
+                                    <div class="form-group">
+                                        <label for="recipient-name" class="col-form-label">Tên <span class="text-danger">*</span></label>
+                                        @Html.EditorFor(model => model.FullName, new { htmlAttributes = new { @class = "form-control", required = "required" } })
+                                        @Html.ValidationMessageFor(x => x.FullName, "", new { @class = "text-danger" })
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="recipient-name" class="col-form-label">Email <span class="text-danger">*</span></label>
+                                        @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", required = "required" } })
+                                        @Html.ValidationMessageFor(x => x.Email, "", new { @class = "text-danger" })
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="recipient-name" class="col-form-label">Hình ảnh</label>
+                                        <div class="input-group">
+                                            @Html.TextBoxFor(model => model.PathImage, new { @id = "fieldID", @class = "form-control path_file", placeholder = "Hình ảnh" })
+                                            @Html.ValidationMessageFor(x => x.PathImage, "", new { @class = "text-danger" })
+                                            <div class="input-group-append btn-upfle">
+                                                <a data-toggle="modal" data-target="#myModal1" class="btn btn-dark " style="color: white">
+                                                    <i class="fa fa-upload" style="color: white"></i>
+                                                    Browse
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="recipient-name" class="col-form-label">Tài khoản <span class="text-danger">*</span></label>
+                                        @Html.EditorFor(model => model.Username, new { htmlAttributes = new { @class = "form-control", required = "required" } })
+                                        @Html.ValidationMessageFor(x => x.Username, "", new { @class = "text-danger" })
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="recipient-name" class="col-form-label">Mật khẩu <span class="text-danger">*</span></label>
+                                        @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(x => x.Password, "", new { @class = "text-danger" })
+                                    </div>
+                                    <div class="form-group text-right mb-0">
+                                        <button class="btn btn-primary" type="submit">Lưu</button>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="myModal1">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4>Quản lý tệp tin</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+
+            </div>
+            <div class="modal-body">
+                <iframe src="/filemanager/dialog.php?type=1&fldr=&field_id=fieldID" frameborder="0" style="overflow:hidden; min-height:600px; height:100%;width:100%" height="100%" width="100%"></iframe>
+            </div>
+        </div>
+    </div>
+</div>
+

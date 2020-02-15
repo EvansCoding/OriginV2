@@ -23,7 +23,19 @@ namespace OriginV2.Core.Services
         {
             return context.Products.OrderByDescending(x => x.CreateAt).Take(1).SingleOrDefault();
         }
-
+        public Product GetProductByHashCode(string hash)
+        {
+            try
+            {
+                return context.Products
+                    .Include(x => x.Supplier)
+                    .Where(x => x.QRHashCode == hash).SingleOrDefault();
+            }
+            catch (Exception)
+            {
+            }
+            return null;
+        }
         public Product GetProduct(string id)
         {
             try

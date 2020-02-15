@@ -206,15 +206,15 @@ namespace OriginV2.Web.Areas.Admin.Controllers
             }
             else
             {
-                var account = accountService.GetAccountByUserName(model.Username);
-                if (account != null)
+                var user = userService.GetUserByID(model.Id);
+                if (user != null)
                 {
-                    if (!account.Username.Equals(model.Username) && !model.Username.Equals(""))
+                    if (!user.Account.Username.Equals(model.Username) && !model.Username.Equals(""))
                     {
                         var listCount = context.Accounts.Where(x => x.Username.Equals(model.Username)).ToList();
                         if (listCount.Count == 0)
                         {
-                            account.Username = model.Username;
+                            user.Account.Username = model.Username;
                         }
                         else
                         {
@@ -225,13 +225,14 @@ namespace OriginV2.Web.Areas.Admin.Controllers
                             };
                             return RedirectToAction("UserView", "User");
                         }
+
                     }
 
-                    account.User.FullName = model.FullName;
-                    account.User.Email = model.Email;
-                    account.User.PathImage = model.PathImage;
-                    account.Password = model.Password;
-                    account.User.UpdateAt = DateTime.Now;
+                    user.FullName = model.FullName;
+                    user.Email = model.Email;
+                    user.PathImage = model.PathImage;
+                    user.Account.Password = model.Password;
+                    user.UpdateAt = DateTime.Now;
                     try
                     {
 

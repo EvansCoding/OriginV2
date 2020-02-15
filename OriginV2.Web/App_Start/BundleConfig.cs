@@ -20,6 +20,26 @@ namespace OriginV2.Web
                       "~/Content/Admin/assets/css/bootstrap.min.css",
                       "~/Content/Admin/assets/css/app.min.css",
                       "~/Content/Admin/assets/css/icons.min.css"));
+            bundles.Add(new ScriptBundle("~/bundles/script").Include(
+                    "~/Content/Client/js/vendor/modernizr-3.6.0.min.js",
+                    "~/Content/Client/js/vendor/jquery-1.12.4.min.js",
+                    "~/Content/Client/js/bootstrap.min.js",
+                    "~/Content/Client/js/aos.js",
+                    "~/Content/Client/js/wow.min.js",
+                    "~/Content/Client/js/slick.min.js",
+                    "~/Content/Client/js/jquery.easing.min.js",
+                    "~/Content/Client/js/main.js"
+          ));
+
+            bundles.Add(new StyleBundle("~/Content/css").Include(
+                      "~/Content/Client/css/bootstrap.css",
+                      "~/Content/Client/css/LineIcons.css",
+                      "~/Content/Client/css/animate.css",
+                      "~/Content/Client/css/aos.css",
+                      "~/Content/Client/css/slick.css",
+                      "~/Content/Client/css/default.css",
+                      "~/Content/Client/css/style.css"
+                      ).Include("~/Content/Client/css/font-awesome.min.css", new CssRewriteUrlTransform()));
 
             BundleTable.EnableOptimizations = false;
         }

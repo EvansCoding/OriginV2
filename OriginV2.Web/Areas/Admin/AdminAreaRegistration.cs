@@ -17,7 +17,8 @@ namespace OriginV2.Web.Areas.Admin
             context.MapRoute(
                 "Admin_default",
                 "Admin/{controller}/{action}/{id}",
-                new { controller = "User", action = "ProfileView", id = UrlParameter.Optional }
+                new { controller = "User", action = "ProfileView", id = UrlParameter.Optional },
+                            namespaces: new[] { "OriginV2.Web.Areas.Admin.Controllers" }
             );
         }
     }

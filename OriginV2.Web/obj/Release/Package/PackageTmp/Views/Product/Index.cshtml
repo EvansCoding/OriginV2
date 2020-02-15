@@ -1,0 +1,94 @@
+﻿@model OriginV2.Web.ViewModels.ProductViewModel
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!--====== Required meta tags ======-->
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!--====== Title ======-->
+    <title>Truy Xuất Nguồn Gốc Sản Phẩm</title>
+
+    <!--====== Favicon Icon ======-->
+    <link rel="shortcut icon" href="~/Assets/images/favicon.png" type="image/png">
+
+    @Styles.Render("~/Content/css")
+    @*<link href="@Styles.Url("~/Content/css")"></link>*@
+</head>
+
+<body>
+
+    <div class="preloader">
+        <div class="loader_34">
+            <div class="ytp-spinner">
+                <div class="ytp-spinner-container">
+                    <div class="ytp-spinner-rotator">
+                        <div class="ytp-spinner-left">
+                            <div class="ytp-spinner-circle"></div>
+                        </div>
+                        <div class="ytp-spinner-right">
+                            <div class="ytp-spinner-circle"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section id="about" class="about-area pt-80 pb-130">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="about-image mt-50 clearfix">
+                        <div class="single-image float-left">
+                            <img src=@Model.ImageOne alt="About">
+                        </div>
+                        <div data-aos="fade-right" class="about-btn">
+                            <a class="main-btn" href="#"><span><i class="fa fa-qrcode" aria-hidden="true"></i></span> @Model.Name</a>
+                        </div>
+                        <div class="single-image image-tow float-right">
+                            <img src=@Model.ImageTwo alt="About">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="about-content mt-45">
+                        <h4 class="about-welcome" style="font-family: Arial, Helvetica, sans-serif;">Truy Xuất Nguồn gốc</h4>
+                        <h3 class="about-title mt-10">@Model.Name</h3>
+                        <hr />
+                        <h4 class="mt-25">Thông Tin Sản Xuất </h4>
+                        <p class="mt-25">
+                            <b>Tên sản phẩm:</b>
+                            @Model.Name
+
+                        </p>
+                        <p class="mt-25"><b>Chủ sản xuất:</b>  @Model.NameSupplier</p>
+                        <p class="mt-25"><b>Địa chỉ: </b> @Model.AddressSupplier</p>
+                        <p class="mt-25">
+                            <b>Ngày thu hoạch:  </b>@Model.Harvest.ToShortDateString()
+                        </p>
+                        <hr />
+                        <h4 class="mt-25">Thông Tin Sản Phẩm </h4>
+                        <p class="mt-25"><b>Công nghệ sản xuất: </b> @Model.Technology</p>
+                        <p class="mt-25" style="text-align:justify">
+                            <b>Nguồn gốc: </b>
+                            @Model.Origin
+                        </p>
+                        <p class="mt-25" style="text-align:justify">
+                            <b>Đặc điểm: </b>
+                            @Model.Attribute
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--====== ABOUT PART ENDS ======-->
+    @Scripts.Render("~/bundles/script")
+</body>
+
+</html>
+

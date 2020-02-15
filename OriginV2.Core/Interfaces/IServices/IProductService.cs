@@ -7,6 +7,7 @@ namespace OriginV2.Core.Interfaces.IServices
     {
         Product GetParent();
         Product GetProduct(string id);
-       IEnumerable<Product> PageListAdmin(string search, string supplier, int page, int pageSize);
+        Product GetProductByHashCode(string hash);
+        IEnumerable<Product> PageListAdmin(string search, string supplier, int page, int pageSize);
     }
 }
